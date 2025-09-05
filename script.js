@@ -159,15 +159,48 @@ for (let i = 0; i < sliders.length; i++) {
                 slideLeft();
             } else {
                 scrollLock = true;
+                let rightDifference = b - firstSliderCardIndex;
+                let leftDifference = firstSliderCardIndex - b;
 
-                const rightDifference = b - firstSliderCardIndex;
-                for (let s = 0; s < rightDifference; s++) {
-                    slideRight(false);
+                if (rightDifference < 0) {
+                    rightDifference = (numberOfCards - firstSliderCardIndex) + b;
                 }
 
-                setTimeout(() => {
-                    scrollLock = false;
-                }, sliderTransitionTime + 21);
+                if (leftDifference < 0) {
+                    leftDifference = firstSliderCardIndex + numberOfCards - b;
+                }
+
+                function slideRightTimeout() {
+                    if (rightDifference > 0) {
+                        slideRight(false);
+                        rightDifference--;
+
+                        setTimeout(() => {
+                            slideRightTimeout();
+                        }, sliderTransitionTime + 21);
+                    } else {
+                        scrollLock = false;
+                    }
+                }
+
+                function slideLeftTimeout() {
+                    if (leftDifference > 0) {
+                        slideLeft(false);
+                        leftDifference--;
+
+                        setTimeout(() => {
+                            slideLeftTimeout();
+                        }, sliderTransitionTime + 21);
+                    } else {
+                        scrollLock = false;
+                    }
+                }
+
+                if (rightDifference <= leftDifference) {
+                    slideRightTimeout();
+                } else {
+                    slideLeftTimeout();
+                }
             }
         });
     }
