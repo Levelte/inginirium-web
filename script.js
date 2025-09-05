@@ -72,11 +72,7 @@ for (let i = 0; i < sliders.length; i++) {
     movingBlock.onpointerdown = beginSliding;
     movingBlock.onpointerup = stopSliding;
 
-    leftButton.addEventListener("click", () => {
-        if (scrollLock === true) {
-            return;
-        }
-
+    function slideLeft(releaseScrollLock = true) {
         scrollLock = true;
 
         if (movingBlockPosition === 0) {
@@ -100,16 +96,19 @@ for (let i = 0; i < sliders.length; i++) {
             firstSliderCardIndex = numberOfCards - 1;
         }
 
-        setTimeout(() => {
-            scrollLock = false;
-        }, sliderTransitionTime + 21);
+        if (releaseScrollLock === true) {
+            setTimeout(() => {
+                scrollLock = false;
+            }, sliderTransitionTime + 21);
+        }
+    }
+
+    leftButton.addEventListener("click", () => {
+        if (scrollLock === true) return;
+        slideLeft();
     });
 
-    rightButton.addEventListener("click", () => {
-        if (scrollLock === true) {
-            return;
-        }
-
+    function slideRight(releaseScrollLock = true) {
         scrollLock = true;
 
         if (movingBlockPosition + sliderCardsAtOnce >= numberOfCards) {
@@ -133,8 +132,43 @@ for (let i = 0; i < sliders.length; i++) {
             firstSliderCardIndex = 0;
         }
 
-        setTimeout(() => {
-            scrollLock = false;
-        }, sliderTransitionTime + 21);
+        if (releaseScrollLock === true) {
+            setTimeout(() => {
+                scrollLock = false;
+            }, sliderTransitionTime + 21);
+        }
+    }
+
+    rightButton.addEventListener("click", () => {
+        if (scrollLock === true) return;
+        slideRight();
     });
+
+    const miniButtons = slider.getElementsByClassName("mini_buttons")[0].getElementsByClassName("mini_button");
+    for (let b = 0; b < miniButtons.length; b++) {
+        const miniButton = miniButtons[b];
+
+        miniButton.addEventListener("click", () => {
+            if (scrollLock === true) return;
+            if (firstSliderCardIndex === b) return;
+
+
+            if ((firstSliderCardIndex + 1) % numberOfCards === b) {
+                slideRight();
+            } else if ((firstSliderCardIndex - 1 === b) || (firstSliderCardIndex === 0 && b === numberOfCards - 1)) {
+                slideLeft();
+            } else {
+                scrollLock = true;
+
+                const rightDifference = b - firstSliderCardIndex;
+                for (let s = 0; s < rightDifference; s++) {
+                    slideRight(false);
+                }
+
+                setTimeout(() => {
+                    scrollLock = false;
+                }, sliderTransitionTime + 21);
+            }
+        });
+    }
 }
