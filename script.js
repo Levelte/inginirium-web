@@ -5,6 +5,10 @@ const sliderTransitionTime = 300;
 let sliderCardWidth = 366.67;
 let sliderCardsAtOnce = 3;
 
+function loopNumber(n, max) {
+    return ((n % (max + 1)) + (max + 1)) % (max + 1);
+}
+
 for (let i = 0; i < sliders.length; i++) {
     const slider = sliders[i];
     const movingBlock = slider.getElementsByClassName("slider_moving_block")[0];
@@ -17,6 +21,16 @@ for (let i = 0; i < sliders.length; i++) {
     let scrollLock = false;
     let slidePointerPosition = 0;
 
+    const miniButtons = slider.getElementsByClassName("mini_buttons")[0].getElementsByClassName("mini_button");
+
+    function selectMiniButton(buttonIndex) {
+        for (let b = 0; b < miniButtons.length; b++) {
+            const miniButton = miniButtons[b];
+            miniButton.classList.remove("selected");
+        }
+        miniButtons[buttonIndex].classList.add("selected");
+    }
+
     function firstCardToLast() {
         const firstChild = movingBlock.firstElementChild;
         movingBlock.appendChild(firstChild);
@@ -27,6 +41,8 @@ for (let i = 0; i < sliders.length; i++) {
         movingBlock.insertBefore(lastChild, movingBlock.firstElementChild);
     }
 
+    let initialFirstSliderCardIndex = 0;
+
     function beginSliding(e) {
         if (scrollLock === true) return;
 
@@ -34,6 +50,7 @@ for (let i = 0; i < sliders.length; i++) {
         movingBlock.onpointermove = slide;
         movingBlock.setPointerCapture(e.pointerId);
         slidePointerPosition = e.clientX;
+        initialFirstSliderCardIndex = firstSliderCardIndex;
     }
 
     function stopSliding(e) {
@@ -65,6 +82,12 @@ for (let i = 0; i < sliders.length; i++) {
             movingBlockPosition -= 1;
             firstCardToLast();
         }
+
+        const slidedForCards = Math.round((slidePointerPosition - e.clientX) / (sliderCardWidth + sliderRightMargin));
+        if (initialFirstSliderCardIndex + slidedForCards !== firstSliderCardIndex) {
+            firstSliderCardIndex = loopNumber(initialFirstSliderCardIndex + slidedForCards, numberOfCards - 1);
+            selectMiniButton(firstSliderCardIndex);
+        }
         
         movingBlock.style.transform = `translate(${-(slidePointerPosition - e.clientX) - movingBlockPosition * (sliderCardWidth + sliderRightMargin)}px)`;
     }
@@ -95,6 +118,8 @@ for (let i = 0; i < sliders.length; i++) {
         } else {
             firstSliderCardIndex = numberOfCards - 1;
         }
+
+        selectMiniButton(firstSliderCardIndex);
 
         if (releaseScrollLock === true) {
             setTimeout(() => {
@@ -132,6 +157,8 @@ for (let i = 0; i < sliders.length; i++) {
             firstSliderCardIndex = 0;
         }
 
+        selectMiniButton(firstSliderCardIndex);
+
         if (releaseScrollLock === true) {
             setTimeout(() => {
                 scrollLock = false;
@@ -144,7 +171,6 @@ for (let i = 0; i < sliders.length; i++) {
         slideRight();
     });
 
-    const miniButtons = slider.getElementsByClassName("mini_buttons")[0].getElementsByClassName("mini_button");
     for (let b = 0; b < miniButtons.length; b++) {
         const miniButton = miniButtons[b];
 
@@ -177,7 +203,7 @@ for (let i = 0; i < sliders.length; i++) {
 
                         setTimeout(() => {
                             slideRightTimeout();
-                        }, sliderTransitionTime + 21);
+                        }, sliderTransitionTime + 100 + 21);
                     } else {
                         scrollLock = false;
                     }
@@ -190,7 +216,7 @@ for (let i = 0; i < sliders.length; i++) {
 
                         setTimeout(() => {
                             slideLeftTimeout();
-                        }, sliderTransitionTime + 21);
+                        }, sliderTransitionTime + 100 + 21);
                     } else {
                         scrollLock = false;
                     }

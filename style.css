@@ -314,11 +314,40 @@ button {
     transform: translateX(-50%);
 }
 
-.slider .mini_buttons > div > div > button {
+.slider .mini_buttons .mini_button {
+    position: relative;
     float: left;
     width: 110px;
     height: 100%;
     margin: 0 5px;
+    padding: 62px 9px 15px;
 
-    background-color: black;
+    background-color: transparent;
+    color: black;
+    border-radius: 0;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.slider .mini_buttons .mini_button.selected {
+    color: #813F8E;
+}
+
+.slider .mini_buttons .mini_button:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.slider .mini_buttons .mini_button > img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 50px;
+    margin-top: 12px;
+}
+
+.slider .mini_buttons .mini_button > p {
+    margin: 0;
 }
