@@ -3,6 +3,11 @@
     src: url("./fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 
+@font-face {
+    font-family: Agora;
+    src: url("./fonts/PFAgoraSlabPro/PF Agora Slab Pro Bold.ttf");
+}
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -17,8 +22,27 @@ body {
     font-weight: 400;
 }
 
+hr {
+    border: none;
+    border-top: 1px solid rgb(200, 200, 200);
+    margin: 20px 0;
+}
+
 a {
     text-decoration: none;
+    color: initial;
+}
+
+a:visited {
+    color: initial;
+}
+
+a:active {
+    color: initial;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 faded {
@@ -29,9 +53,17 @@ faded {
     transition: none !important;
 }
 
-#wrapper > div {
+.wrapper > div {
     width: 1140px;
     margin: auto;
+}
+
+.wrapper.grey {
+    background-color: rgb(245, 245, 245);
+}
+
+.wrapper.yellow {
+    background-color: #fee500;
 }
 
 #upper_header {
@@ -91,27 +123,26 @@ button {
 }
 
 #header {
-    padding-bottom: 50px;
+    padding-bottom: 25px;
     overflow: auto;
 }
 
-#header > div {
-    float: left;
-}
-
 #header > div:first-child {
+    float: left;
     margin-right: 10px;
 }
 
 #header > div:last-child {
     float: right;
-    padding: 15px 0;
+    padding: 20px 0;
     font-weight: bold;
 }
 
 #header > .menu_item {
-    margin: 12px 3px;
-    padding: 6px;
+    display: block;
+    float: left;
+    margin: 8px 3px;
+    padding: 15px 6px;
 
     text-transform: uppercase;
     font-size: 12px;
@@ -121,20 +152,91 @@ button {
     border-radius: 23px;
 }
 
+#header > .menu_item.selected {
+    background-color: #fee500;
+}
+
 #header > .menu_item:hover {
-    padding: 5px;
+    padding: 14px 5px;
     border: 1px solid rgb(75, 75, 75);
     cursor: pointer;
+    text-decoration: none;
+}
+
+#header > .menu_item.selected:hover {
+    padding: 15px 6px;
+    border: none;
+}
+
+
+
+#footer {
+    font-size: 13px;
+}
+
+#copyright {
+    height: 100px;
+    padding: 60px 15px 15px 15px;
+    margin-bottom: 50px;
+}
+
+#copyright > * {
+    float: left;
+}
+
+#copyright > img {
+    width: 174px;
+    filter: grayscale(100%);
+}
+
+#copyright > div {
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+#links {
+    height: 300px;
+}
+
+#links > div {
+    float: left;
+    width: 200px;
+    margin-right: 260px;
+}
+
+#links > div:last-child {
+    margin-right: 0;
+}
+
+#links > div > a {
+    display: block;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+#links > div > * {
+    margin-bottom: 15px;
+}
+
+#links .icons img {
+    margin-right: 10px;
+    height: 30px;
 }
 
 
 
 .slider {
     position: relative;
-    height: 430px;
+    height: 550px;
+    margin-top: 20px !important;
 
     color: black;
     user-select: none;
+}
+
+.slider img {
+    -webkit-user-drag: none;
+    user-drag: none;
 }
 
 .slider > button {
@@ -164,12 +266,12 @@ button {
 }
 
 .slider > .slide_left_button {
-    top: 50%;
+    top: 215px;
     transform: translate(-50%, -50%);
 }
 
 .slider > .slide_right_button {
-    top: 50%;
+    top: 215px;
     right: 0;
     transform: translate(50%, -50%);
 }
@@ -184,7 +286,7 @@ button {
 
 .slider > div {
     width: 100%;
-    height: 100%;
+    height: 430px;
     overflow: hidden;
     margin-bottom: 10px;
 }
@@ -261,6 +363,7 @@ button {
 
 .slider .slide_buttons > *:hover {
     background-color: #E4CE00;
+    text-decoration: none;
 }
 
 .slider .slide_buttons.double > *:first-child {
@@ -350,4 +453,64 @@ button {
 
 .slider .mini_buttons .mini_button > p {
     margin: 0;
+}
+
+.slider .slider_badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 70px;
+    height: 72px;
+    padding-top: 17px;
+
+    color: white;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 70 72'%3E%3Cpath fill='%23813F8E' d='M21 0h28l21 21v30L49 72H21L0 51.8V21.1L21 0Z'/%3E%3C/svg%3E");
+    line-height: 22px;
+}
+
+.slider .slider_badge .big {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+
+    text-align: center;
+}
+
+.slider .slider_badge .small {
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+.opening_block {
+    padding: 40px;
+    overflow: auto;
+}
+
+.opening_block > * {
+    float: left;
+}
+
+.opening_block > .text_block {
+    padding: 25px 0 0 25px;
+}
+
+.opening_block .header {
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: "Agora";
+    text-transform: uppercase;
+    line-height: 55px;
+}
+
+.opening_block .header span {
+    font-family: "Agora";
+}
+
+.opening_block .text {
+    font-size: 24px;
+    line-height: 35px;
 }

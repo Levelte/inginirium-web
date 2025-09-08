@@ -7,7 +7,7 @@
         <link href="style.css" rel="stylesheet">
     </head>
     <body>
-        <div id="wrapper">
+        <div class="wrapper">
             <div id="upper_header">
                 <div>
                     <div>Центр молодежного инновационного творчества и технопарк</div>
@@ -25,12 +25,12 @@
             </div>
 
             <div id="header">
-                <div><img src="./images/inginirium.png" alt="Логотип Инжинириума"></div>
-                <div class="menu_item">О нас</div>
-                <div class="menu_item">Курсы</div>
-                <div class="menu_item">Мастер-классы</div>
-                <div class="menu_item">Технопарки</div>
-                <div class="menu_item">Сеть центров</div>
+                <div><a href="index.html"><img src="./images/inginirium.png" alt="Логотип Инжинириума"></a></div>
+                <a href="master-classes.html" class="menu_item">О нас</a>
+                <a href="index.html" class="menu_item">Курсы</a>
+                <a href="master-classes.html" class="menu_item">Мастер-классы</a>
+                <a href="index.html" class="menu_item">Технопарки</a>
+                <a href="index.html" class="menu_item">Сеть центров</a>
                 <div>+7 (495) 120-99-75</div>
             </div>
 
@@ -44,7 +44,7 @@
                 <div>
                     <div class="slider_moving_block">
                         <div class="color_1">
-                            <img src="./images/new-year.png" alt="">
+                            <img src="./images/new-year.png" alt="" draggable="false">
                             <div class="slide_info">
                                 <div class="slide_title">Запись на новый учебный год уже открыта!</div>
 
@@ -58,7 +58,11 @@
                             </div>
                         </div>
                         <div class="color_2">
-                            <img src="./images/ai.png" alt="">
+                            <div class="slider_badge">
+                                <p class="big">7-8</p>
+                                <p class="small">класс</p>
+                            </div>
+                            <img src="./images/ai.png" alt="" draggable="false">
                             <div class="slide_info">
                                 <div class="slide_title">Основы искусственного интеллекта</div>
 
@@ -74,7 +78,7 @@
                             </div>
                         </div>
                         <div class="color_3">
-                            <img src="./images/calc.png" alt="">
+                            <img src="./images/calc.png" alt="" draggable="false">
                             <div class="slide_info">
                                 <div class="slide_title">
                                     Супер-калькулятор 
@@ -92,7 +96,7 @@
                             </div>
                         </div>
                         <div class="color_4">
-                            <img src="./images/capital.png" alt="">
+                            <img src="./images/capital.png" alt="" draggable="false">
                             <div class="slide_info">
                                 <div class="slide_title">Оплата обучения Материнским капиталом</div>
 
@@ -118,29 +122,60 @@
                     <div>
                         <div>
                             <button class="mini_button selected">
-                                <img src="./images/new-year.png" alt="">
+                                <img src="./images/new-year.png" alt="" draggable="false">
                                 <p>Новый учебный год</p>
                             </button>
 
                             <button class="mini_button">
-                                <img src="./images/ai.png" alt="">
+                                <img src="./images/ai.png" alt="" draggable="false">
                                 <p>Основы искус. интеллекта</p>
                             </button>
 
                             <button class="mini_button">
-                                <img src="./images/calc.png" alt="">
+                                <img src="./images/calc.png" alt="" draggable="false">
                                 <p>Калькулятор скидок</p>
                             </button>
 
                             <button class="mini_button">
-                                <img src="./images/capital.png" alt="">
+                                <img src="./images/capital.png" alt="" draggable="false">
                                 <p>Обучение за мат. капитал</p>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
+
+        <div class="wrapper grey">
+            <div id="footer">
+                <div id="copyright">
+                    <img src="./images/inginirium.png" alt="Логотип Инжинириума">
+                    <div>Все права защищены</div>
+                </div>
+
+                <div id="links">
+                    <div>
+                        <a href="#">Сведения об образовательной организации</a>
+                    </div>
+                    <div>
+                        <a href="#">Франшиза</a>
+                        <a href="#">Оферта</a>
+                    </div>
+                    <div>
+                        <a href="#">Контакты</a>
+                        <div>Телефон: <b><a href="tel:+74951209975">+7 (495) 120-99-75</a></b></div>
+                        <div>Для СМИ: <b><a href="mailto:press@emtc.ru">press@emtc.ru</a></b></div>
+                        <div>Хотите работать у нас?</div>
+                        <div><b><a href="mailto:a@inginirium.ru">a@inginirium.ru</a></b></div>
+                        <hr>
+                        <div class="icons">
+                            <a href="https://vk.com/inginirium"><img src="./images/vk_logo.svg" alt=""></a>
+                            <a href="https://www.youtube.com/channel/UCBx0xw9L-vvIkiNeCWrP75Q"><img src="./images/yt.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="script.js"></script>
     </body>
