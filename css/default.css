@@ -57,7 +57,7 @@ select {
     text-align: center;
     border: 1px solid #999999;
     appearance: none;
-    background: url('./images/arr.svg') 87% / 6% no-repeat;
+    background: url('../images/arr.svg') 87% / 6% no-repeat;
 }
 
 button {
