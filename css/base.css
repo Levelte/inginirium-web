@@ -1,0 +1,146 @@
+.disable_transitions {
+    transition: none !important;
+}
+
+.wrapper > div {
+    width: 1140px;
+    margin: auto;
+}
+
+.wrapper.grey {
+    background-color: rgb(245, 245, 245);
+}
+
+.wrapper.yellow {
+    background-color: #fee500;
+}
+
+#upper_header {
+    padding: 25px 0 20px 0;
+    overflow: auto;
+}
+
+#upper_header > div {
+    float: left;
+}
+
+#upper_header > div:nth-child(1) {
+    width: 58.5%;
+}
+
+#upper_header > div:nth-child(1) > div:first-child {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#upper_header > div:nth-child(1) > div:nth-child(2) {
+    color: rgb(75, 75, 75);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#upper_header > div:last-child {
+    padding-left:  70px;
+}
+
+#header {
+    padding-bottom: 25px;
+    overflow: auto;
+}
+
+#header > div:first-child {
+    float: left;
+    margin-right: 10px;
+}
+
+#header > div:last-child {
+    float: right;
+    padding: 20px 0;
+    font-weight: bold;
+}
+
+#header > .menu_item {
+    display: block;
+    float: left;
+    margin: 8px 3px;
+    padding: 15px 6px;
+
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+
+    border: none;
+    border-radius: 23px;
+}
+
+#header > .menu_item.selected {
+    background-color: #fee500;
+}
+
+#header > .menu_item:hover {
+    padding: 14px 5px;
+    border: 1px solid rgb(75, 75, 75);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#header > .menu_item.selected:hover {
+    padding: 15px 6px;
+    border: none;
+}
+
+
+
+#footer {
+    font-size: 13px;
+}
+
+#copyright {
+    height: 100px;
+    padding: 60px 15px 15px 15px;
+    margin-bottom: 50px;
+}
+
+#copyright > * {
+    float: left;
+}
+
+#copyright > img {
+    width: 174px;
+    filter: grayscale(100%);
+}
+
+#copyright > div {
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+#links {
+    height: 300px;
+}
+
+#links > div {
+    float: left;
+    width: 200px;
+    margin-right: 260px;
+}
+
+#links > div:last-child {
+    margin-right: 0;
+}
+
+#links > div > a {
+    display: block;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+#links > div > * {
+    margin-bottom: 15px;
+}
+
+#links .icons img {
+    margin-right: 10px;
+    height: 30px;
+}
